@@ -21,5 +21,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/companies', [CompanyController::class, 'store']);
     Route::post('/companies/{company}/contacts', [ContactController::class, 'store']);
+    Route::get('/companies/{company}/contacts', [ContactController::class, 'index']);
 });
 
