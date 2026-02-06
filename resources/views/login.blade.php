@@ -10,12 +10,13 @@
     <script>
         document.getElementById('loginBtn').addEventListener('click', async () => {
             const email = document.getElementById('email').value;
-            const res = await fetch('/login', {
+            const res = await fetch('http://127.0.0.1:8000/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ email })
             });
             const data = await res.json();
+            console.log(data);
             if (data.token) {
                 localStorage.setItem('token', data.token);
                 alert('Login successful!');

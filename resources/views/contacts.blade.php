@@ -29,7 +29,7 @@
         const companyId = {{ $company->id ?? 0 }};
 
         async function fetchContacts(query = '') {
-            let url = `/companies/${companyId}/contacts`;
+            let url = `http://127.0.0.1:8000/api/companies/${companyId}/contacts`;
             if(query) url += `?q=${query}`;
             const res = await fetch(url, { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await res.json();
@@ -44,7 +44,7 @@
         }
 
         document.getElementById('addContactBtn').addEventListener('click', async () => {
-            const res = await fetch(`/companies/${companyId}/contacts`, {
+            const res = await fetch(`http://127.0.0.1:8000/api/companies/${companyId}/contacts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
