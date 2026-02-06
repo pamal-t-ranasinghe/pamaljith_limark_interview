@@ -11,8 +11,8 @@
     </div>
 
     <hr>
-    <h3>Company List</h3>
-    <ul id="companyList" class="list-group"></ul>
+{{--    <h3>Company List</h3>--}}
+{{--    <ul id="companyList" class="list-group"></ul>--}}
 
     <script>
         const token = localStorage.getItem('token');
