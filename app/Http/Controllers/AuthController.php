@@ -9,18 +9,23 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email'
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email'
+            ]);
 
-        $user = User::firstOrCreate([
-            'email' => $request->email
-        ]);
+            $user = User::firstOrCreate([
+                'email' => $request->email
+            ]);
 
-        $token = $user->createToken('api')->plainTextToken;
+            $token = $user->createToken('api')->plainTextToken;
 
-        return response()->json([
-            'token' => $token
-        ]);
+            return response()->json([
+                'token' => $token
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred while processing your request.'], 500);
+        }
+
     }
 }
