@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function store(Request $request, Company $company): \Illuminate\Http\JsonResponse
+    public function storeContact(Request $request, Company $company): \Illuminate\Http\JsonResponse
     {
         abort_if($company->user_id !== $request->user()->id, 403);
 
@@ -24,7 +24,7 @@ class ContactController extends Controller
         return response()->json($contact, 201);
     }
 
-    public function index(Request $request, Company $company)
+    public function index(Request $request, Company $company): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         abort_if($company->user_id !== $request->user()->id, 403);
 
