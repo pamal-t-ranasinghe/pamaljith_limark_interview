@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', fn() => view('login'));
+Route::get('/companies', fn() => view('companies'));
+Route::get('/companies/{company}/contacts', function(\App\Models\Company $company) {
+    return view('contacts', compact('company'));
 });
